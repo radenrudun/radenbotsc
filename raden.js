@@ -356,29 +356,32 @@ case 'freefire':
         break
         
         case 'alightmotion':
-          case 'amprem':
-            case 'am': {
-              reply(`
-🛒ALIGHT MOTION PREMIUM
-> PRIVAT 1TAHUN Rp. 10.000
-> SHARING 1TAHUN Rp. 5.000`)
-            }
-            
+case 'amprem':
+case 'am': {
+  reply(`🛒 *ALIGHT MOTION PREMIUM*
+> PRIVAT 1 TAHUN: Rp. 10.000
+> SHARING 1 TAHUN: Rp. 5.000`)
+  break
+}
 
-    default: {
-      const low = body.toLowerCase().trim();
-      if (low === 'alight motion') {
-        return reply(`
-🛒ALIGHT MOTION PREMIUM
-> PRIVAT 1TAHUN Rp. 10.000
-> SHARING 1TAHUN Rp. 5.000`)
-    }
-    if (low === 'canva pro') {
-      return reply(`
-INI PRODUK CANVA PRO`)
-    }
-break
+default: {
+  const low = body.toLowerCase().trim();
+
+  if (low === 'alight motion') {
+    return reply(`🛒 *ALIGHT MOTION PREMIUM*
+> PRIVAT 1 TAHUN: Rp. 10.000
+> SHARING 1 TAHUN: Rp. 5.000`);
   }
+
+  if (low === 'canva pro') {
+    return reply(`🎨 *CANVA PRO PREMIUM*
+> 1 BULAN: Rp. 7.000
+> PERMANEN (Sharing): Rp. 15.000`);
+  }
+
+  // ...tambahkan lainnya jika perlu
+  break
+}
   
   }
   
