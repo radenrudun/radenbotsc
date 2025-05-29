@@ -38,10 +38,6 @@ const {
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
   moment.tz.setDefault('Asia/Jakarta');
-  const {
-    toAudio
-  } = require('./lib/converter');
-  const API_KEY_WIRO = "qa29e4vlarzzdgrnhpmes3xi5dj64y8x"; // Ganti sesuai kebutuhan
   async function adminGroup(m, raden) {
     let groupMetadata = await raden.groupMetadata(m.chat)
     let groupAdmins = groupMetadata.participants.filter(p => p.admin).map(p => p.id)
@@ -233,31 +229,99 @@ if (db.settings.autoread) {
     console.error("Gagal autoread:", err);
   }
 }
-
-    if (!db.groups) db.groups = {};
-    if (!db.groups[groupId]) {
-      db.groups[groupId] = {
-      products: {},
-      welcome: null,
-      leave: null,
-      welcome_active: true,
-      leave_active: true
-      };
-    }
     
 
     
     
     
     switch (command) {
-case 'list':
-  case 'menu':
-  reply(`╔═════ \`USER INFO\` ═════
-║ *Name* : \`\`\`${userName}\`\`\`
-║ *ID* : *@${sender.split(`@`)[0]}*
+      
+      // OWNER MENU
+      
+      case 'anticall':
+  if (!isOwner) return conn.sendMessage(from, { text: 'Fitur ini hanya untuk owner!' }, { quoted: m });
+
+  if (!text) return conn.sendMessage(from, { text: `Ketik *anticall on* untuk aktif atau *anticall off* untuk nonaktif.` }, { quoted: m });
+
+  const setting = readDatabase().settings || {};
+  if (text.toLowerCase() === 'on') {
+    setting.anticall = true;
+    saveDatabase();
+    conn.sendMessage(from, { text: '✅ Fitur Anti Call telah *AKTIF*' }, { quoted: m });
+  } else if (text.toLowerCase() === 'off') {
+    setting.anticall = false;
+    saveDatabase();
+    conn.sendMessage(from, { text: '❌ Fitur Anti Call telah *NONAKTIF*' }, { quoted: m });
+  } else {
+    conn.sendMessage(from, { text: 'Format salah! Ketik *anticall on* atau *anticall off*' }, { quoted: m });
+  }
+  break;
+  
+  // BOT MENU
+  
+      case 'halo':
+      case 'hai':
+        case: 'p': {
+          reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik
+          \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
+        }
+case 'raden':
+  case 'menu': {
+  reply(`╔═════ \`RADEN MENU\` ═════
 ║ *DATE* : \`\`\`${tanggalHari}\`\`\`
 ║ *TIME* : \`\`\`${time} WIB\`\`\`
 
+╔════ \`TOPUP GAME\` ══
+║
+║ *FREEFIRE*
+║ *MOBILELEGEND*
+║ *PUBGMOBILE*
+║ *HOK*
+║
+╠══ \`APLIKASI PREM\` ═══
+║
+║ *ALIGHTMOTION*
+║ *CAPCUT*
+║ *CANVA*
+║ *NETFLIX*
+║ *SPOTIFY*
+║ *CHATGPT*
+║ *BLACKBOXAI*
+║ *DISNEY*
+║ *YOUTUBE*
+║ *BSTATION*
+║ *VISION+*
+║
+╠══ \`MENU PULSA\` ═══
+║
+║ *PULSATELKOMSEL*
+║ *PULSASMARTFREN*
+║ *PULSAINDOSAT*
+║ *PULSAAXIS*
+║ *PULSABYU*
+║ *PULSAXL*
+║
+╠══ \`MENU DATA\` ═══
+║
+║ *DATATELKOMSEL*
+║ *DATASMARTFREN*
+║ *DATAINDOSAT*
+║ *DATAAXIS*
+║ *DATABYU*
+║ *DATAXL*
+║
+╚═══ ⟪ ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
+}
+break
+
+//  MENU TOP UP
+
+case 'freefire':
+  case 'ff':
+    case 'epep':
+      case 'topupff':
+        case 'topupfreefire': {
+          reply(`
 ╔════ \`MENU FREE FIRE\` ══
 ║
 ║ *💎50 = Rp. 7.500*
@@ -284,36 +348,17 @@ case 'list':
 ║ *MemberMingguan = 29.000*
 ║ *MemberBulanan = Rp. 81.500*
 ║
-╠══ \`MENU MOBILE LEGEND\` ═══
-║
-║ *💎*
-║ *💎*
-║
-╠══ \`MENU PUBG MOBILE\` ═══
-║
-║ *💎*
-║
-╠══ \`MENU APLIKASI PREM\` ═══
-║
-║ *ALIGHT MOTION*
-║ *CAPCUT*
-║ *CANVA*
-║ *NETFLIX*
-║
-╠══ \`MENU PULSA INDOSAT\` ═══
-║
-║ *PULSAIDS5* 
-║ *PULSAIDS10* 
-║ *PULSAIDS15* 
-║ *PULSAIDS20* 
-║
-╠══ \`MENU PAKET DATA\` ═══
-║
-║ *IDS1*
-║ *IDS2*
-║
 ╚═══ ⟪ ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
-
+        }
+        break
+        case 'mobilelegend':
+  case 'mobile legend':
+    case 'ml':
+      case 'mlbb':
+        case 'topupml': {
+          reply(`cooming soon`)
+        }
+        break 
     default: {
       
     }
