@@ -252,21 +252,22 @@ if (db.settings.autoread) {
     switch (command) {
       
       case 'anticall':
-  if (!isOwner) return conn.sendMessage(from, { text: 'Fitur ini hanya untuk owner!' }, { quoted: m });
+  if (!isOwner) return m.reply('Fitur ini hanya untuk owner!');
 
-  if (!text) return conn.sendMessage(from, { text: `Ketik *anticall on* untuk aktif atau *anticall off* untuk nonaktif.` }, { quoted: m });
+  if (!text) return m.reply(`Contoh penggunaan:\n\n${prefix}anticall on\n${prefix}anticall off`);
 
-  const setting = readDatabase().settings || {};
-  if (text.toLowerCase() === 'on') {
-    setting.anticall = true;
+  if (!db.settings) db.settings = {};
+
+  if (text === 'on') {
+    db.settings.anticall = true;
     saveDatabase();
-    conn.sendMessage(from, { text: '✅ Fitur Anti Call telah *AKTIF*' }, { quoted: m });
-  } else if (text.toLowerCase() === 'off') {
-    setting.anticall = false;
+    m.reply('✅ Fitur *Anti-Call* telah *diaktifkan*.');
+  } else if (text === 'off') {
+    db.settings.anticall = false;
     saveDatabase();
-    conn.sendMessage(from, { text: '❌ Fitur Anti Call telah *NONAKTIF*' }, { quoted: m });
+    m.reply('✅ Fitur *Anti-Call* telah *dinonaktifkan*.');
   } else {
-    conn.sendMessage(from, { text: 'Format salah! Ketik *anticall on* atau *anticall off*' }, { quoted: m });
+    m.reply(`Input tidak valid. Gunakan:\n\n${prefix}anticall on\n${prefix}anticall off`);
   }
   break;
   
