@@ -1,0 +1,33 @@
+{
+  "groups": {
+    "group_id_1": {
+      "products": {}
+    },
+    "group_id_2": {
+      "products": {}
+    },
+    "120363418880534707@g.us": {
+      "products": {},
+      "welcome": "HALO @user SELAMAT DATANG DI GROUP @group",
+      "leave": "SAMPAI JUMPA @user DARI GROUP @group"
+    },
+    "120363401353840744@g.us": {
+      "products": {},
+      "welcome": "SELAMAT DATANG"
+    },
+    "6281327751879@s.whatsapp.net": {
+      "products": {},
+      "welcome": null,
+      "leave": null,
+      "welcome_active": true,
+      "leave_active": true
+    }
+  },
+  "settings": {
+    "anticall": true,
+    "autoread": true,
+    "roomgemini1": {
+      "6281327751879@s.whatsapp.net": false
+    }
+  }
+}
