@@ -21,9 +21,6 @@
     "path": "^0.12.7",
     "child_process": "^1.0.2",
     "fluent-ffmpeg": "^2.1.2",
-    "tmp": "^0.2.1",
-    "sharp": "^0.32.1",
-    "crypto": "^1.0.1",
     "cheerio": "^1.0.0-rc.10"
   }
 }
