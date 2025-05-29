@@ -35,8 +35,6 @@ const {
   const path = require('path');
   const { spawn } = require("child_process");
   const { execSync } = require("child_process");
-  const tmp = require('tmp');
-  const sharp = require('sharp');
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
   moment.tz.setDefault('Asia/Jakarta');
@@ -252,26 +250,6 @@ if (db.settings.autoread) {
     
     
     switch (command) {
-      
-      case 'anticall':
-  if (!isOwner) return reply('Fitur ini hanya untuk owner!');
-
-  if (!text) return m.reply(`Contoh penggunaan:\n\n${prefix}anticall on\nanticall off`);
-
-  if (!db.settings) db.settings = {};
-
-  if (text === 'on') {
-    db.settings.anticall = true;
-    saveDatabase();
-    m.reply('✅ Fitur *Anti-Call* telah *diaktifkan*.');
-  } else if (text === 'off') {
-    db.settings.anticall = false;
-    saveDatabase();
-    m.reply('✅ Fitur *Anti-Call* telah *dinonaktifkan*.');
-  } else {
-    reply(`Input tidak valid. Gunakan:\n\nanticall on\nanticall off`);
-  }
-  break;
   
       case 'halo':
       case 'hai':
