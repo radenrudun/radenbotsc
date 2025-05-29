@@ -277,6 +277,7 @@ if (db.settings.autoread) {
           reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik
           \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
         }
+        break
 case 'raden':
   case 'menu': {
   reply(`╔═════ \`RADEN MENU\` ═════
