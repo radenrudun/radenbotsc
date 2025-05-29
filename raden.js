@@ -358,10 +358,10 @@ case 'freefire':
         case 'alightmotion':
           case 'amprem':
             case 'am': {
-              reply('
-              🛒ALIGHT MOTION PREMIUM
-              > PRIVAT 1TAHUN Rp. 10.000
-              > SHARING 1TAHUN Rp. 5.000')
+              reply(`
+🛒ALIGHT MOTION PREMIUM
+> PRIVAT 1TAHUN Rp. 10.000
+> SHARING 1TAHUN Rp. 5.000`)
             }
             
 
