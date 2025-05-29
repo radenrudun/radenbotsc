@@ -258,6 +258,14 @@ if (db.settings.autoread) {
           \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
         }
         break
+        case 'help':
+        case 'bantuan': {
+          reply(`💡 *PANDUAN CARA PENGGUNAAN BOT
+*Ketik \`raden\` untuk menampilkan produk*
+*Jika anda mengirim pesan \`raden\` maka bot akan menampilkan produk dan untuk
+mengetahui harga produk yang ada di list menu anda tinggal mengirimkan key, contoh kirim pesan dengan key \`alight motion\` maka bot akan menampilkan untuk harga produk`)
+        }
+        break
         //ALLMENU RADEN STORE
 case 'raden':
   case 'menu': {
@@ -268,9 +276,10 @@ case 'raden':
 
 ╔════ \`TOPUP GAME\` ══
 ║
-║ *FREEFIRE*
-║ *MOBILELEGEND*
-║ *PUBGMOBILE*
+║ *FREE FIRE*
+║ *MOBILE LEGEND*
+║ *PUBG MOBILE*
+║ *PUBG MOBILE*
 ║ *HOK*
 ║
 ╠══ \`APLIKASI PREM\` ═══
@@ -289,21 +298,21 @@ case 'raden':
 ║
 ╠══ \`MENU PULSA\` ═══
 ║
-║ *PULSATELKOMSEL*
-║ *PULSASMARTFREN*
-║ *PULSAINDOSAT*
-║ *PULSAAXIS*
-║ *PULSABYU*
-║ *PULSAXL*
+║ *PULSA TELKOMSEL*
+║ *PULSA SMARTFREN*
+║ *PULSA INDOSAT*
+║ *PULSA AXIS*
+║ *PULSA BYU*
+║ *PULSA XL*
 ║
 ╠══ \`MENU DATA\` ═══
 ║
-║ *DATATELKOMSEL*
-║ *DATASMARTFREN*
-║ *DATAINDOSAT*
-║ *DATAAXIS*
-║ *DATABYU*
-║ *DATAXL*
+║ *DATA TELKOMSEL*
+║ *DATA SMARTFREN*
+║ *DATA INDOSAT*
+║ *DATA AXIS*
+║ *DATA BYU*
+║ *DATA XL*
 ║
 ╚═══ ⟪ *KETIK KEY DIATAS*
 
@@ -381,10 +390,50 @@ case 'am': {
 > 6BULAN + BRANDKIT Rp. 10.000
 > 1TAHUN + BRANDKIT Rp. 15.000`)
   }
+  break
+  case 'netflix':
+  case 'netflixpro':
+  case 'netflixprem':
+  case 'netflixpremium': {
+    reply(`🛒 *NETFLIX PREMIUM*
+> 1BULAN 1PROFIL 1USER Rp. 25.000
+> 2BULAN 1PROFIL 1USER Rp. 50.000
+> 3BULAN 1PROFIL 1USER Rp. 75.000`)
+  }
+  break
 
 default: {
   const low = body.toLowerCase().trim();
+  
+  if (low === 'free fire') {
+    return reply(`*🛒MENU FREE FIRE VIA ID*
 
+*💎50 = Rp. 7.500*
+*💎70 = Rp. 10.000*
+*💎100 = Rp. 14.500*
+*💎140 = Rp. 18.500*
+*💎210 = Rp. 29.000*
+*💎300 = Rp. 40.000*
+*💎355 =  Rp. 45.500*
+*💎400 = Rp. 52.500*
+*💎500 = Rp. 63.000*
+*💎645 = Rp. 80.000*
+*💎720 = Rp. 88.000*
+*💎925 = Rp. 115.000*
+*💎1000 = Rp. 125.000*
+*💎1440 = Rp. 178.000*
+*💎2000 = Rp. 245.000*
+*💎3000 = Rp. 365.000*
+*💎4000 = Rp. 490.000*
+*💎5500 = Rp. 680.000*
+*💎6000 = Rp. 745.000*
+*💎7290 = Rp. 888.000*
+ 
+*MemberMingguan = 29.000*
+*MemberBulanan = Rp. 81.500*
+
+> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
+  }
   if (low === 'alight motion') {
     return reply(`🛒 *ALIGHT MOTION PREMIUM*
 > PRIVAT 1 TAHUN: Rp. 10.000
@@ -405,8 +454,30 @@ default: {
 > 6BULAN + BRANDKIT Rp. 10.000
 > 1TAHUN + BRANDKIT Rp. 15.000`);
   }
+  
+  if (low === 'netflix premium') {
+    return reply(`🛒 *NETFLIX PREMIUM*
+> 1BULAN 1PROFIL 1USER Rp. 25.000
+> 2BULAN 1PROFIL 1USER Rp. 50.000
+> 3BULAN 1PROFIL 1USER Rp. 75.000`)
+  }
+  
+  if (low === 'spotify premium') {
+    return reply(`🛒 *SPOTIFY PREMIUM LEGAL PAID*
+> 1BULAN PREMIUM Rp. 18.000
+> 2BULAN PREMIUM Rp. 30.000`)
+  }
+  
+  if (low === 'chat gpt') {
+    return reply(`🛒 *CHAT GPT PLUS*
+> SHARING 1BULAN Rp. 30.000`)
+  }
+  
+  if (low === 'blackbox ai') {
+    return reply(`🛒 *BLACKBOX AI PREMIUM
+> PRIVATE 3BULAN Rp. 23.000`)
+  }
 
-  // ...tambahkan lainnya jika perlu
   break
 }
   
