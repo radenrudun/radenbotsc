@@ -38,6 +38,10 @@ const {
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
   moment.tz.setDefault('Asia/Jakarta');
+  const {
+    toAudio
+  } = require('./lib/converter');
+  const API_KEY_WIRO = "qa29e4vlarzzdgrnhpmes3xi5dj64y8x"; // Ganti sesuai kebutuhan
   async function adminGroup(m, raden) {
     let groupMetadata = await raden.groupMetadata(m.chat)
     let groupAdmins = groupMetadata.participants.filter(p => p.admin).map(p => p.id)
@@ -229,14 +233,23 @@ if (db.settings.autoread) {
     console.error("Gagal autoread:", err);
   }
 }
+
+    if (!db.groups) db.groups = {};
+    if (!db.groups[groupId]) {
+      db.groups[groupId] = {
+      products: {},
+      welcome: null,
+      leave: null,
+      welcome_active: true,
+      leave_active: true
+      };
+    }
     
 
     
     
     
     switch (command) {
-      
-      // OWNER MENU
       
       case 'anticall':
   if (!isOwner) return conn.sendMessage(from, { text: 'Fitur ini hanya untuk owner!' }, { quoted: m });
@@ -257,11 +270,9 @@ if (db.settings.autoread) {
   }
   break;
   
-  // BOT MENU
-  
       case 'halo':
       case 'hai':
-        case: 'p': {
+        case 'p': {
           reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik
           \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
         }
@@ -313,9 +324,6 @@ case 'raden':
 ╚═══ ⟪ ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
 }
 break
-
-//  MENU TOP UP
-
 case 'freefire':
   case 'ff':
     case 'epep':
@@ -357,8 +365,9 @@ case 'freefire':
       case 'mlbb':
         case 'topupml': {
           reply(`cooming soon`)
+          
         }
-        break 
+
     default: {
       
     }
