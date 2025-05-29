@@ -35,6 +35,8 @@ const {
   const path = require('path');
   const { spawn } = require("child_process");
   const { execSync } = require("child_process");
+  const tmp = require('tmp');
+  const sharp = require('sharp');
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
   moment.tz.setDefault('Asia/Jakarta');
