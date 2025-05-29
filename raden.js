@@ -252,9 +252,9 @@ if (db.settings.autoread) {
     switch (command) {
       
       case 'anticall':
-  if (!isOwner) return m.reply('Fitur ini hanya untuk owner!');
+  if (!isOwner) return reply('Fitur ini hanya untuk owner!');
 
-  if (!text) return m.reply(`Contoh penggunaan:\n\n${prefix}anticall on\n${prefix}anticall off`);
+  if (!text) return m.reply(`Contoh penggunaan:\n\n${prefix}anticall on\nanticall off`);
 
   if (!db.settings) db.settings = {};
 
@@ -267,7 +267,7 @@ if (db.settings.autoread) {
     saveDatabase();
     m.reply('✅ Fitur *Anti-Call* telah *dinonaktifkan*.');
   } else {
-    m.reply(`Input tidak valid. Gunakan:\n\n${prefix}anticall on\n${prefix}anticall off`);
+    reply(`Input tidak valid. Gunakan:\n\nanticall on\nanticall off`);
   }
   break;
   
