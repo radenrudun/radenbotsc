@@ -258,9 +258,11 @@ if (db.settings.autoread) {
           \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
         }
         break
+        //ALLMENU RADEN STORE
 case 'raden':
   case 'menu': {
-  reply(`╔═════ \`RADEN MENU\` ═════
+  reply(`
+╔═════ \`RADEN MENU\` ═════
 ║ *DATE* : \`\`\`${tanggalHari}\`\`\`
 ║ *TIME* : \`\`\`${time} WIB\`\`\`
 
@@ -273,13 +275,13 @@ case 'raden':
 ║
 ╠══ \`APLIKASI PREM\` ═══
 ║
-║ *ALIGHTMOTION*
+║ *ALIGHT MOTION*
 ║ *CAPCUT*
 ║ *CANVA*
 ║ *NETFLIX*
 ║ *SPOTIFY*
 ║ *CHATGPT*
-║ *BLACKBOXAI*
+║ *BLACKBOX AI*
 ║ *DISNEY*
 ║ *YOUTUBE*
 ║ *BSTATION*
@@ -303,7 +305,9 @@ case 'raden':
 ║ *DATABYU*
 ║ *DATAXL*
 ║
-╚═══ ⟪ ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
+╚═══ ⟪ *KETIK KEY DIATAS*
+
+> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
 }
 break
 case 'freefire':
@@ -312,33 +316,33 @@ case 'freefire':
       case 'topupff':
         case 'topupfreefire': {
           reply(`
-╔════ \`MENU FREE FIRE\` ══
-║
-║ *💎50 = Rp. 7.500*
-║ *💎70 = Rp. 10.000*
-║ *💎100 = Rp. 14.500*
-║ *💎140 = Rp. 18.500*
-║ *💎210 = Rp. 29.000*
-║ *💎300 = Rp. 40.000*
-║ *💎355 =  Rp. 45.500*
-║ *💎400 = Rp. 52.500*
-║ *💎500 = Rp. 63.000*
-║ *💎645 = Rp. 80.000*
-║ *💎720 = Rp. 88.000*
-║ *💎925 = Rp. 115.000*
-║ *💎1000 = Rp. 125.000*
-║ *💎1440 = Rp. 178.000*
-║ *💎2000 = Rp. 245.000*
-║ *💎3000 = Rp. 365.000*
-║ *💎4000 = Rp. 490.000*
-║ *💎5500 = Rp. 680.000*
-║ *💎6000 = Rp. 745.000*
-║ *💎7290 = Rp. 888.000*
-║ 
-║ *MemberMingguan = 29.000*
-║ *MemberBulanan = Rp. 81.500*
-║
-╚═══ ⟪ ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
+*🛒MENU FREE FIRE VIA ID*
+
+*💎50 = Rp. 7.500*
+*💎70 = Rp. 10.000*
+*💎100 = Rp. 14.500*
+*💎140 = Rp. 18.500*
+*💎210 = Rp. 29.000*
+*💎300 = Rp. 40.000*
+*💎355 =  Rp. 45.500*
+*💎400 = Rp. 52.500*
+*💎500 = Rp. 63.000*
+*💎645 = Rp. 80.000*
+*💎720 = Rp. 88.000*
+*💎925 = Rp. 115.000*
+*💎1000 = Rp. 125.000*
+*💎1440 = Rp. 178.000*
+*💎2000 = Rp. 245.000*
+*💎3000 = Rp. 365.000*
+*💎4000 = Rp. 490.000*
+*💎5500 = Rp. 680.000*
+*💎6000 = Rp. 745.000*
+*💎7290 = Rp. 888.000*
+ 
+*MemberMingguan = 29.000*
+*MemberBulanan = Rp. 81.500*
+
+> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
         }
         break
         case 'mobilelegend':
@@ -349,9 +353,29 @@ case 'freefire':
           reply(`cooming soon`)
           
         }
+        break
+        
+        case 'alightmotion':
+          case 'amprem':
+            case 'am': {
+              reply('
+              🛒ALIGHT MOTION PREMIUM
+              > PRIVAT 1TAHUN Rp. 10.000
+              > SHARING 1TAHUN Rp. 5.000')
+            }
+            
 
     default: {
-      
+      const low = body.toLowerCase().trim();
+      if (low === 'alight motion') {
+        return reply(`
+🛒ALIGHT MOTION PREMIUM
+> PRIVAT 1TAHUN Rp. 10.000
+> SHARING 1TAHUN Rp. 5.000`)
+    }
+    if (low === 'canva pro') {
+      return reply(`
+INI PRODUK CANVA PRO`)
     }
 break
   }
