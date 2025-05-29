@@ -384,6 +384,7 @@ default: {
 }
   
   }
+}
   
   module.exports = {
   handler,
