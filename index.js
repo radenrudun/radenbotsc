@@ -216,27 +216,26 @@ raden.ev.on("group-participants.update", async (update) => {
   }
 });
 
-// index.js
-raden.ev.on('call', async (callUpdate) => {
-  const db = readDatabase();
-  if (!db.settings || !db.settings.anticall) return;
+raden.ev.on('call', async (calls) => {
+  try {
+    const db = readDatabase();
+    if (!db.settings) db.settings = { anticall: false };
+    if (!db.settings.anticall) return;
 
-  for (const call of callUpdate) {
-    const callerId = call.from;
+    for (const call of calls) {
+      const caller = call.from;
+      if (call.status === 'offer') {
+        // Tolak panggilan
+        await raden.rejectCall(call.id, caller);
 
-    // Cek jika ada panggilan masuk
-    if (call.status === 'offer') {
-      console.log(`[ANTICALL] Menolak panggilan dari ${callerId}`);
-
-      try {
-        await raden.rejectCall(call.id, callerId);
-        await raden.sendMessage(callerId, {
-          text: 'DILARANG MENELPON BOT!*\n\nSilakan ketik raden dan kirim pesan!*'
+        // Kirim pesan peringatan
+        await raden.sendMessage(caller, {
+          text: 'DILARANG MENELPON NOMOR BOT, SILAHKAN KETIK *HELP* ATAU *MENU !!*'
         });
-      } catch (err) {
-        console.error('Gagal menolak panggilan:', err);
       }
     }
+  } catch (err) {
+    console.error("[ANTICALL ERROR]", err);
   }
 });
 
