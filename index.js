@@ -1,9 +1,7 @@
 const { makeWASocket, useMultiFileAuthState, fetchLatestBaileysVersion } = require("@whiskeysockets/baileys")
 const pino = require("pino")
 const chalk = require("chalk")
-const readline = require("readline")
-const tmp = require("tmp");
-  const sharp = require("sharp")
+const readline = require("readline");
 
 const usePairingCode = true
 
