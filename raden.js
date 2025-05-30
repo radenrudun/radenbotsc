@@ -385,14 +385,7 @@ ${daftarKey}
         break
         case 'help':
         case 'bantuan': {
-          reply(`*💡PANDUAN CARA PENGGUNAAN*
-> Ketik \`list\` untuk menampilkan produk.
-> Jika anda sudah mengirim \`list\` maka akan ada respon otomatis yang menampilkan list produk.
-> Didalam \`list\` ada berupa key contoh \`FREE FIRE\` dan jika anda memasukan key tersebut maka akan menampilkan harga untuk produk dari key tersebut, key juga bisa disebut produk.
-> untuk info lebih lanjut bisa ketik \`owner\` maka nanti akan otomatis membalas
-dengan mengirim kontak \`owner\` atau anda bisa join ke grop untuk informasi
-update.
-> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``)
+          reply(`Sabar`)
         }
         break
         //ALLMENU RADEN STORE
