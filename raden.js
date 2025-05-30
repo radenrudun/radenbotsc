@@ -264,7 +264,68 @@ if (db.settings.autoread) {
     
     
     switch (command) {
-      
+      case 'ping':
+    case 'runtime':
+    case 'status':
+    case 'device': {
+        const {
+          performance
+        } = require('perf_hooks');
+
+        const start = performance.now();
+
+        const runtime = () => {
+          const seconds = process.uptime();
+          const h = Math.floor(seconds / 3600);
+          const m = Math.floor((seconds % 3600) / 60);
+          const s = Math.floor(seconds % 60);
+          return `${h} jam, ${m} menit, ${s} detik`;
+        };
+
+        const formatBytes = (bytes) => {
+          const sizes = ['Bytes',
+            'KB',
+            'MB',
+            'GB',
+            'TB'];
+          if (bytes === 0) return '0 Byte';
+          const i = Math.floor(Math.log(bytes) / Math.log(1024));
+          return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
+        };
+
+        const used = process.memoryUsage();
+        const totalRam = os.totalmem();
+        const freeRam = os.freemem();
+        const usedRam = totalRam - freeRam;
+        const cpu = os.cpus()[0].model;
+        const core = os.cpus().length;
+
+        const end = performance.now();
+        const speed = (end - start).toFixed(3);
+
+        const info = `📊 *STATUS ${botName}*
+
+⏱ *Runtime:* ${runtime()}
+⚡ *Response Speed:* ${speed} ms
+📅 *Date:* ${tanggalHari}
+⏰ *Time:* ${time} WIB
+
+🖥️ *System Memory:*
+• Total      : ${formatBytes(totalRam)}
+• Used       : ${formatBytes(usedRam)}
+• Available  : ${formatBytes(freeRam)}
+
+🧾 *Bot Memory (Node.js):*
+• RSS        : ${formatBytes(used.rss)}
+• Heap Used  : ${formatBytes(used.heapUsed)}
+
+🛠 *Node.js Version:* ${process.version}
+💻 *CPU:* ${cpu}
+⚙️ *CPU Cores:* ${core}\n`;
+
+        return reply(info);
+      }
+      break;
       case 'owner':
     case 'own': {
       if (isGroup) break;
