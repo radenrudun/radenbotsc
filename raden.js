@@ -381,7 +381,7 @@ ${daftarKey}
 
   return reply(pesan);
 }
-      case 'bot'
+      case 'bot':
       case 'halo':
       case 'hai':
         case 'p': {
