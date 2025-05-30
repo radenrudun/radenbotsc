@@ -37,6 +37,19 @@ const {
   const { execSync } = require("child_process");
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
+
+const databaseFile = './database.json';
+let database = { lists: {} };
+
+// Load database
+if (fs.existsSync(databaseFile)) {
+  database = JSON.parse(fs.readFileSync(databaseFile));
+}
+
+// Save database
+function saveDatabase() {
+  fs.writeFileSync(databaseFile, JSON.stringify(database, null, 2));
+}
   
   moment.tz.setDefault('Asia/Jakarta');
   const {
