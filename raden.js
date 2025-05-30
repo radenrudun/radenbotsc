@@ -391,16 +391,14 @@ case 'bantuan': {
 `> Dalam list ada key seperti: \`FREE FIRE\`, Jika anda mengetik dan mengirim \`FREE FIRE\` maka akan otomatis muncul harganya.\n` +
 `> Info lebih lanjut bisa ketik \`owner\`.\n` +
 `> Untuk info update silahkan join grup:\n` +
-`> https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8`,
+`> ,\`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
     contextInfo: {
       externalAdReply: {
         title: '📢 RADEN STORE - TOPUP MURAH',
         body: 'Klik untuk masuk grup WhatsApp',
-        thumbnailUrl: 'https://files.catbox.moe/9oxog5.jpg', // Gambar harus valid URL file
-        sourceUrl: 'https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8', // Tujuan saat gambar diklik
+        sourceUrl: 'https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8',
         mediaType: 1,
-        showAdAttribution: true,
-        renderLargerThumbnail: true
+        showAdAttribution: true
       }
     }
   }, { quoted: m });
