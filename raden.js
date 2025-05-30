@@ -385,7 +385,7 @@ ${daftarKey}
       case 'halo':
       case 'hai':
         case 'p': {
-          tagReply(`*Halo kak @${sender.split('@')[0]}*\n\n*Selamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
+          tagReply(`*Halo kak* *@${sender.split('@')[0]}*\n\n*Selamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
         }
         break
         case 'help':
