@@ -434,7 +434,7 @@ default: {
   }
   
   if (low === 'saya ingin sewa bot whatsapp') {
-    return reply(`Untuk Sewa Bot bisa cobain dulu botnya di grup kami ya kak, ketik menu di grup maka bot akan menampilkan menu bot yang bisa dipakai, bot ini cocok untuk jaga grup dan untuk menambahkan list produk dan menampilkan list produk. Untuk info lebih lanjut bisa hubungi owner dengan ketik owner atau bisa langsung cobain bot gratis di grup kami\n> \`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``);
+    return reply(`Untuk Sewa Bot bisa cobain dulu botnya di grup kami ya kak, ketik menu di grup maka bot akan menampilkan menu bot yang bisa dipakai. Bot ini cocok untuk jaga grup dan untuk menambahkan list produk dan menampilkan list produk dan digunakan untuk respon otomatis. Untuk info lebih lanjut bisa hubungi owner dengan ketik owner atau bisa langsung cobain bot gratis di grup kami\n> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``);
   }
 }
 break;
