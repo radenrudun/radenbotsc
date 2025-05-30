@@ -36,11 +36,6 @@ const {
   const { spawn } = require("child_process");
   const { execSync } = require("child_process");
   const thumMenu = fs.readFileSync("./media/raden.png")
-  const sharp = require('sharp');
-const thumbnailBuffer = await sharp('./media/ppgc.jpg')
-  .resize(300, 300)
-  .jpeg()
-  .toBuffer();
   const databasePath = path.join(__dirname, './database/database.json');
   const tanggalFormat = new Date().toLocaleDateString('id-ID', {
     day: '2-digit',
