@@ -36,6 +36,11 @@ const {
   const { spawn } = require("child_process");
   const { execSync } = require("child_process");
   const thumMenu = fs.readFileSync("./media/raden.png")
+  const sharp = require('sharp');
+const thumbnailBuffer = await sharp('./media/ppgc.jpg')
+  .resize(300, 300)
+  .jpeg()
+  .toBuffer();
   const databasePath = path.join(__dirname, './database/database.json');
   const tanggalFormat = new Date().toLocaleDateString('id-ID', {
     day: '2-digit',
@@ -385,25 +390,24 @@ ${daftarKey}
         break
         case 'help':
 case 'bantuan': {
-  const thumbnail = fs.readFileSync('./media/ppgc.jpg'); // Pastikan file ini ada!
+  const thumbnail = fs.readFileSync('./media/ppgc.jpg'); // Pastikan ini JPEG kecil
 
   await raden.sendMessage(from, {
     text: `*💡 PANDUAN CARA PENGGUNAAN*\n\n` +
 `> Ketik \`list\` untuk menampilkan produk.\n` +
 `> Jika anda sudah mengirim \`list\`, maka akan ada respon otomatis yang menampilkan list produk.\n` +
-`> Di dalam \`list\` ada berupa key, contoh: \`FREE FIRE\`, jika anda memasukkan key tersebut maka akan menampilkan harga untuk produk dari key tersebut. Key juga bisa disebut produk.\n` +
-`> Untuk info lebih lanjut bisa ketik \`owner\`, maka bot akan otomatis membalas dengan kontak owner.\n` +
-`> Atau, join grup untuk informasi update:` +
-`> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
+`> Di dalam \`list\` ada berupa key, contoh: \`FREE FIRE\`, jika anda memasukkan key tersebut maka akan menampilkan harga produk.\n` +
+`> Untuk info lebih lanjut, ketik \`owner\` untuk mendapatkan kontak.\n` +
+`> Atau join grup update:\n> https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8`,
     contextInfo: {
       externalAdReply: {
         title: '📢 RADEN STORE - TOPUP MURAH',
-        body: 'Klik untuk masuk grup WhatsApp',
+        body: 'Klik di sini untuk gabung grup WhatsApp',
         sourceUrl: 'https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8',
-        mediaType: 1,
+        mediaType: 2, // Ganti jadi 2 agar WhatsApp tahu ini link WhatsApp
         renderLargerThumbnail: true,
         showAdAttribution: true,
-        jpegThumbnail: thumbnail // thumbnail lokal
+        thumbnail: thumbnail // gunakan ini (bukan jpegThumbnail)
       }
     }
   }, { quoted: m });
