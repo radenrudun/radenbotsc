@@ -368,13 +368,16 @@ case 'menu': {
     .map(k => `╠🛍️ *${k.toUpperCase()}*`)
     .join('\n');
 
-  const pesan = `╔═════ \`DAFTAR LIST\` ═════
+  const pesan = `╔═════ \`RADEN STORE\` ═════
 ║👤 NAMA : *${botName || 'Raden Store'}*
 ║🛒 TOKO : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
 ║📆 TANGGAL : \`\`\`${tanggalFormat}\`\`\`
 ║⏰ JAM : \`\`\`${waktuList}\`\`\`
 
+╔═════ \`DAFTAR LIST\` ═════
+║
 ${daftarKey}
+║
 ╚═══ ⟪ *KETIK KEY DIATAS UNTUK RESPON*
 
 > ©𝑹𝒂𝒅𝒆𝒏 𝑺𝒕𝒐𝒓𝒆`;
