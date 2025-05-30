@@ -369,7 +369,7 @@ case 'menu': {
     .join('\n');
 
   const pesan = `╔═════ \`DAFTAR LIST\` ═════
-║👤 USER : *${userName || 'Raden Store'}*
+║👤 USER : *@${sender.split('@')[0]}*
 ║🛒 TOKO : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
 ║📆 TANGGAL : \`\`\`${tanggalFormat}\`\`\`
 ║⏰ JAM : \`\`\`${waktuList}\`\`\`
@@ -385,7 +385,7 @@ ${daftarKey}
       case 'halo':
       case 'hai':
         case 'p': {
-          reply(`*Halo kak ${userName}*\n\n*Selamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
+          reply(`*Halo kak @${sender.split('@')[0]}*\n\n*Selamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
         }
         break
         case 'help':
