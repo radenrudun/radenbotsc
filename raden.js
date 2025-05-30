@@ -369,7 +369,7 @@ case 'menu': {
     .join('\n');
 
   const pesan = `╔═════ \`DAFTAR LIST\` ═════
-║👤 NAMA : *${botName || 'Raden Store'}*
+║👤 USER : *${userName || 'Raden Store'}*
 ║🛒 TOKO : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
 ║📆 TANGGAL : \`\`\`${tanggalFormat}\`\`\`
 ║⏰ JAM : \`\`\`${waktuList}\`\`\`
