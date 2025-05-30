@@ -391,12 +391,12 @@ ${daftarKey}
         case 'help':
 case 'bantuan': {
   await raden.sendMessage(from, {
-    text: `*💡 PANDUAN CARA PENGGUNAAN*\n\n` +
+    text: `*💡PANDUAN CARA PENGGUNAAN*\n\n` +
 `> Ketik \`list\` untuk menampilkan produk.\n` +
 `> Setelah melihat list, kirim *key produk* misalnya \`FREE FIRE\`.\n` +
 `> Bot akan otomatis membalas harga produk tersebut.\n` +
 `> Untuk info lebih lanjut, ketik \`owner\`.\n` +
-`> Join grup update:\nhttps://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8`,
+`> Join grup untuk informasi\n\`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
     
     contextInfo: {
       externalAdReply: {
