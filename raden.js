@@ -37,6 +37,7 @@ const {
   const { execSync } = require("child_process");
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
+  
   moment.tz.setDefault('Asia/Jakarta');
   const {
     toAudio
@@ -250,6 +251,59 @@ if (db.settings.autoread) {
     
     
     switch (command) {
+      
+      // Tambahkan dalam switch-case handler
+case 'addlist': {
+  if (!text.includes('|')) return reply('Format salah!\nContoh: addlist ucapan selamat | Selamat datang di grup!');
+  const [rawKey, rawValue] = text.split('|');
+  const key = rawKey.trim().toLowerCase();
+  const value = rawValue.trim();
+
+  if (!value) return reply('Isi list tidak boleh kosong!');
+  if (!database.lists[from]) database.lists[from] = {};
+  if (database.lists[from][key]) return reply('Key tersebut sudah terdaftar!');
+
+  database.lists[from][key] = value;
+  saveDatabase();
+  reply(`✅ List berhasil ditambahkan!\nKey: *${key}*\nIsi: ${value}`);
+  break;
+}
+
+case 'updatelist': {
+  if (!text.includes('|')) return reply('Format salah!\nContoh: updatelist ucapan selamat | Halo semuanya!');
+  const [rawKey, rawValue] = text.split('|');
+  const key = rawKey.trim().toLowerCase();
+  const value = rawValue.trim();
+
+  if (!database.lists[from] || !database.lists[from][key]) return reply('Key belum terdaftar!');
+  database.lists[from][key] = value;
+  saveDatabase();
+  reply(`✅ List berhasil diupdate!\nKey: *${key}*\nIsi baru: ${value}`);
+  break;
+}
+
+case 'dellist': {
+  const key = text.trim().toLowerCase();
+  if (!key) return reply('Contoh: dellist ucapan selamat');
+  if (!database.lists[from] || !database.lists[from][key]) return reply('Key tidak ditemukan!');
+
+  delete database.lists[from][key];
+  saveDatabase();
+  reply(`✅ List dengan key *${key}* berhasil dihapus!`);
+  break;
+}
+
+case 'list': {
+  const groupList = database.lists[from];
+  if (!groupList || Object.keys(groupList).length === 0) return reply('❌ Belum ada list yang tersimpan di grup ini.');
+
+  let msg = '📋 *Daftar List Tersimpan:*\n\n';
+  for (const k in groupList) {
+    msg += `🔹 *${k}*\n`;
+  }
+  reply(msg.trim());
+  break;
+}
   
       case 'halo':
       case 'hai':
@@ -403,6 +457,14 @@ case 'am': {
   break
 
 default: {
+  
+  const groupList = database.lists[from] || {};
+const keyList = Object.keys(groupList);
+const match = keyList.find(k => text.toLowerCase() === k.toLowerCase());
+
+if (match) {
+  reply(groupList[match]);
+}
   const low = body.toLowerCase().trim();
   
   if (low === 'free fire') {
