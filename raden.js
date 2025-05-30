@@ -392,7 +392,7 @@ ${daftarKey}
 > untuk info lebih lanjut bisa ketik \`owner\` maka nanti akan otomatis membalas
 dengan mengirim kontak \`owner\` atau anda bisa join ke grop untuk informasi
 update.
-> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``)
+> https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8`)
         }
         break
         //ALLMENU RADEN STORE
