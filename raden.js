@@ -264,6 +264,27 @@ if (db.settings.autoread) {
     
     
     switch (command) {
+      case 'anticall': {
+  if (!isOwner) return reply(ownerOnly);
+  if (!['on', 'off'].includes(text)) return reply("Contoh: anticall on / anticall off");
+
+  db.settings.anticall = text === 'on';
+  saveDatabase(db);
+
+  reply(`AntiCall telah *${text === 'on' ? 'diaktifkan' : 'dinonaktifkan'}*.`);
+  break;
+}
+
+case 'autoread': {
+  if (!isOwner) return reply(ownerOnly);
+  if (!['on', 'off'].includes(text)) return reply("Contoh: autoread on / autoread off");
+
+  db.settings.autoread = text === 'on';
+  saveDatabase(db);
+
+  reply(`AutoRead telah *${text === 'on' ? 'diaktifkan' : 'dinonaktifkan'}*.`);
+  break;
+}
 case 'addlist': {
   if (!isOwner) return reply(ownerOnly)
   if (!text.includes('|')) return reply('Format salah!\nContoh: addlist produk satu | ini adalah produk satu!');
@@ -308,6 +329,7 @@ case 'dellist': {
 }
 
 case 'list': {
+  if (isGroup) break;
   const listData = database.lists[from];
   if (!listData || Object.keys(listData).length === 0) {
     return reply('Belum ada list yang tersimpan di sini.');
@@ -346,8 +368,8 @@ break
         case 'help':
         case 'bantuan': {
           reply(`💡 *PANDUAN CARA PENGGUNAAN BOT
-*Ketik \`raden\` untuk menampilkan produk*
-*Jika anda mengirim pesan \`raden\` maka bot akan menampilkan produk dan untuk
+*Ketik \`list\` untuk menampilkan produk*
+*Jika anda mengirim pesan \`list\` maka bot akan menampilkan produk dan untuk
 mengetahui harga produk yang ada di list menu anda tinggal mengirimkan key, contoh kirim pesan dengan key \`alight motion\` maka bot akan menampilkan untuk harga produk`)
         }
         break
@@ -490,9 +512,12 @@ case 'am': {
 default: {
   
   const groupList = database.lists[from] || {};
-const keyList = Object.keys(groupList);
-const match = keyList.find(k => body.trim().toLowerCase() === k.toLowerCase());
-
+  const keyList = Object.keys(groupList);
+  const match = keyList.find(k => body.trim().toLowerCase() === k.toLowerCase());
+  const incoming = body.trim().toLowerCase()
+  if (!isGroup && database.lists && database.lists[incoming]) {
+    return reply(database.lists[incoming]);
+  }
 if (match) {
   reply(groupList[match]);
 }
