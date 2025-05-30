@@ -260,10 +260,9 @@ if (db.settings.autoread) {
     
     
     switch (command) {
-      
-      // Tambahkan dalam switch-case handler
 case 'addlist': {
-  if (!text.includes('|')) return reply('Format salah!\nContoh: addlist ucapan selamat | Selamat datang di grup!');
+  if (!isOwner) return reply(ownerOnly)
+  if (!text.includes('|')) return reply('Format salah!\nContoh: addlist produk satu | ini adalah produk satu!');
   const [rawKey, rawValue] = text.split('|');
   const key = rawKey.trim().toLowerCase();
   const value = rawValue.trim();
@@ -274,12 +273,13 @@ case 'addlist': {
 
   database.lists[from][key] = value;
   saveDatabase();
-  reply(`✅ List berhasil ditambahkan!\nKey: *${key}*\nIsi: ${value}`);
+  reply(`List berhasil ditambahkan!\nKey: *${key}*\nIsi: ${value}`);
   break;
 }
 
 case 'updatelist': {
-  if (!text.includes('|')) return reply('Format salah!\nContoh: updatelist ucapan selamat | Halo semuanya!');
+  if (!isOwner) return reply(ownerOnly)
+  if (!text.includes('|')) return reply('Format salah!\nContoh: updatelist produk satu |ini adalah produk satu!');
   const [rawKey, rawValue] = text.split('|');
   const key = rawKey.trim().toLowerCase();
   const value = rawValue.trim();
@@ -287,38 +287,56 @@ case 'updatelist': {
   if (!database.lists[from] || !database.lists[from][key]) return reply('Key belum terdaftar!');
   database.lists[from][key] = value;
   saveDatabase();
-  reply(`✅ List berhasil diupdate!\nKey: *${key}*\nIsi baru: ${value}`);
+  reply(`List berhasil diupdate!\nKey: *${key}*\nIsi baru: ${value}`);
   break;
 }
 
 case 'dellist': {
+  if (!isOwner) return reply(ownerOnly)
   const key = text.trim().toLowerCase();
   if (!key) return reply('Contoh: dellist ucapan selamat');
   if (!database.lists[from] || !database.lists[from][key]) return reply('Key tidak ditemukan!');
 
   delete database.lists[from][key];
   saveDatabase();
-  reply(`✅ List dengan key *${key}* berhasil dihapus!`);
+  reply(`List dengan key *${key}* berhasil dihapus!`);
   break;
 }
 
 case 'list': {
-  const groupList = database.lists[from];
-  if (!groupList || Object.keys(groupList).length === 0) return reply('❌ Belum ada list yang tersimpan di grup ini.');
-
-  let msg = '📋 *Daftar List Tersimpan:*\n\n';
-  for (const k in groupList) {
-    msg += `🔹 *${k}*\n`;
+  const listData = database.lists[from];
+  if (!listData || Object.keys(listData).length === 0) {
+    return reply('Belum ada list yang tersimpan di sini.');
   }
-  reply(msg.trim());
-  break;
+
+  const namaTempat = isGroup ? groupMetadata.subject : 'CHAT PRIBADI';
+  const tanggal = moment().format('dddd, DD MMMM YYYY');
+  const waktu = moment().format('HH:mm:ss') + ' WIB';
+
+  const daftarKey = Object.keys(listData)
+    .map(k => `╠🛍️ *${k.toUpperCase()}*`)
+    .join('\n');
+
+  const pesan = `╔═════ \`INFORMASI USER\` ═════
+║ *NAMA* : *${userName || 'Username'}*
+║ *TOKO*     : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
+║ *TANGGAL*   : \`\`\`${tanggalFormat}\`\`\`
+
+╠════ \`LIST ${groupMetadata.subject || 'RADEN STORE'}\` ══
+${daftarKey}
+║
+╚═══ ⟪ *KETIK KEY DIATAS UNTUK RESPON*
+
+> ©𝑹𝒂𝒅𝒆𝒏 𝑺𝒕𝒐𝒓𝒆`;
+
+  return reply(pesan);
 }
+break
   
       case 'halo':
       case 'hai':
         case 'p': {
-          reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik
-          \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
+          reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
         }
         break
         case 'help':
