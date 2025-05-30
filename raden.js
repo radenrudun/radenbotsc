@@ -264,8 +264,10 @@ if (db.settings.autoread) {
     
     
     switch (command) {
+      
       case 'owner':
     case 'own': {
+      if (isGroup) break;
   const number = ownerNumber[0];
   const displayName = "Raden Dev";
 
@@ -283,6 +285,7 @@ END:VCARD`
   }, { quoted: m });
 }
       case 'anticall': {
+        if (isGroup) break;
   if (!isOwner) return reply(ownerOnly);
   if (!['on', 'off'].includes(text)) return reply("Contoh: anticall on / anticall off");
 
@@ -294,6 +297,7 @@ END:VCARD`
 }
 
 case 'autoread': {
+  if (isGroup) break;
   if (!isOwner) return reply(ownerOnly);
   if (!['on', 'off'].includes(text)) return reply("Contoh: autoread on / autoread off");
 
@@ -380,7 +384,7 @@ ${daftarKey}
       case 'halo':
       case 'hai':
         case 'p': {
-          reply(`*Halo kak ${userName}, Selamat Datang di Raden Store*\n> Ketik \`raden\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan menggunakan bot`)
+          reply(`*Halo kak ${userName}\n\nSelamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
         }
         break
         case 'help':
@@ -404,141 +408,6 @@ case 'bantuan': {
   }, { quoted: m });
 }
 break;
-        //ALLMENU RADEN STORE
-case 'raden':
-  case 'menu': {
-  reply(`
-╔═════ \`RADEN MENU\` ═════
-║ *DATE* : \`\`\`${tanggalHari}\`\`\`
-║ *TIME* : \`\`\`${time} WIB\`\`\`
-
-╔════ \`TOPUP GAME\` ══
-║
-║ *FREE FIRE*
-║ *MOBILE LEGEND*
-║ *PUBG MOBILE*
-║ *PUBG MOBILE*
-║ *HOK*
-║
-╠══ \`APLIKASI PREM\` ═══
-║
-║ *ALIGHT MOTION*
-║ *CAPCUT*
-║ *CANVA*
-║ *NETFLIX*
-║ *SPOTIFY*
-║ *CHATGPT*
-║ *BLACKBOX AI*
-║ *DISNEY*
-║ *YOUTUBE*
-║ *BSTATION*
-║ *VISION+*
-║
-╠══ \`MENU PULSA\` ═══
-║
-║ *PULSA TELKOMSEL*
-║ *PULSA SMARTFREN*
-║ *PULSA INDOSAT*
-║ *PULSA AXIS*
-║ *PULSA BYU*
-║ *PULSA XL*
-║
-╠══ \`MENU DATA\` ═══
-║
-║ *DATA TELKOMSEL*
-║ *DATA SMARTFREN*
-║ *DATA INDOSAT*
-║ *DATA AXIS*
-║ *DATA BYU*
-║ *DATA XL*
-║
-╚═══ ⟪ *KETIK KEY DIATAS*
-
-> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
-}
-break
-case 'freefire':
-  case 'ff':
-    case 'epep':
-      case 'topupff':
-        case 'topupfreefire': {
-          reply(`
-*🛒MENU FREE FIRE VIA ID*
-
-*💎50 = Rp. 7.500*
-*💎70 = Rp. 10.000*
-*💎100 = Rp. 14.500*
-*💎140 = Rp. 18.500*
-*💎210 = Rp. 29.000*
-*💎300 = Rp. 40.000*
-*💎355 =  Rp. 45.500*
-*💎400 = Rp. 52.500*
-*💎500 = Rp. 63.000*
-*💎645 = Rp. 80.000*
-*💎720 = Rp. 88.000*
-*💎925 = Rp. 115.000*
-*💎1000 = Rp. 125.000*
-*💎1440 = Rp. 178.000*
-*💎2000 = Rp. 245.000*
-*💎3000 = Rp. 365.000*
-*💎4000 = Rp. 490.000*
-*💎5500 = Rp. 680.000*
-*💎6000 = Rp. 745.000*
-*💎7290 = Rp. 888.000*
- 
-*MemberMingguan = 29.000*
-*MemberBulanan = Rp. 81.500*
-
-> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
-        }
-        break
-        case 'mobilelegend':
-  case 'mobile legend':
-    case 'ml':
-      case 'mlbb':
-        case 'topupml': {
-          reply(`cooming soon`)
-          
-        }
-        break
-        
-        case 'alightmotion':
-case 'amprem':
-case 'am': {
-  reply(`🛒 *ALIGHT MOTION PREMIUM*
-> PRIVAT 1 TAHUN: Rp. 10.000
-> SHARING 1 TAHUN: Rp. 5.000`)
-  }
-  break
-  case 'capcut':
-  case 'cc': {
-    reply(` *CAPCUT PREMIUM*
-> PRIVAT 1MINGGU Rp. 10.000
-> PRIVAT 1BULAN Rp. 30.000
-> SHARING 1BULAN Rp. 15.000`)
-  }
-  break
-  case 'canva':
-  case 'cnv':
-  case 'canvapro':
-  case 'canvaprem': {
-    reply(`🛒 *CANVA PRO MEMBER*
-> 1BULAN + BRANDKIT Rp. 3.000
-> 3BULAN + BRANDKIT Rp. 6.000
-> 6BULAN + BRANDKIT Rp. 10.000
-> 1TAHUN + BRANDKIT Rp. 15.000`)
-  }
-  break
-  case 'netflix':
-  case 'netflixpro':
-  case 'netflixprem':
-  case 'netflixpremium': {
-    reply(`🛒 *NETFLIX PREMIUM*
-> 1BULAN 1PROFIL 1USER Rp. 25.000
-> 2BULAN 1PROFIL 1USER Rp. 50.000
-> 3BULAN 1PROFIL 1USER Rp. 75.000`)
-  }
-  break
 
 default: {
   
@@ -554,80 +423,7 @@ if (match) {
 }
   const low = body.toLowerCase().trim();
   
-  if (low === 'free fire') {
-    return reply(`*🛒MENU FREE FIRE VIA ID*
-
-*💎50 = Rp. 7.500*
-*💎70 = Rp. 10.000*
-*💎100 = Rp. 14.500*
-*💎140 = Rp. 18.500*
-*💎210 = Rp. 29.000*
-*💎300 = Rp. 40.000*
-*💎355 =  Rp. 45.500*
-*💎400 = Rp. 52.500*
-*💎500 = Rp. 63.000*
-*💎645 = Rp. 80.000*
-*💎720 = Rp. 88.000*
-*💎925 = Rp. 115.000*
-*💎1000 = Rp. 125.000*
-*💎1440 = Rp. 178.000*
-*💎2000 = Rp. 245.000*
-*💎3000 = Rp. 365.000*
-*💎4000 = Rp. 490.000*
-*💎5500 = Rp. 680.000*
-*💎6000 = Rp. 745.000*
-*💎7290 = Rp. 888.000*
- 
-*MemberMingguan = 29.000*
-*MemberBulanan = Rp. 81.500*
-
-> ©𝑹𝒂𝒅𝒆𝒏 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓`)
-  }
-  if (low === 'alight motion') {
-    return reply(`🛒 *ALIGHT MOTION PREMIUM*
-> PRIVAT 1 TAHUN: Rp. 10.000
-> SHARING 1 TAHUN: Rp. 5.000`);
-  }
   
-  if (low === 'capcut premium') {
-    return reply(`🛒 *CAPCUT PREMIUM*
-> PRIVAT 1MINGGU Rp. 10.000
-> PRIVAT 1BULAN Rp. 30.000
-> SHARING 1BULAN Rp. 15.000`);
-  }
-  
-  if (low === 'canva pro') {
-    return reply(`🛒 *CANVA PRO MEMBER*
-> 1BULAN + BRANDKIT Rp. 3.000
-> 3BULAN + BRANDKIT Rp. 6.000
-> 6BULAN + BRANDKIT Rp. 10.000
-> 1TAHUN + BRANDKIT Rp. 15.000`);
-  }
-  
-  if (low === 'netflix premium') {
-    return reply(`🛒 *NETFLIX PREMIUM*
-> 1BULAN 1PROFIL 1USER Rp. 25.000
-> 2BULAN 1PROFIL 1USER Rp. 50.000
-> 3BULAN 1PROFIL 1USER Rp. 75.000`)
-  }
-  
-  if (low === 'spotify premium') {
-    return reply(`🛒 *SPOTIFY PREMIUM LEGAL PAID*
-> 1BULAN PREMIUM Rp. 18.000
-> 2BULAN PREMIUM Rp. 30.000`)
-  }
-  
-  if (low === 'chat gpt') {
-    return reply(`🛒 *CHAT GPT PLUS*
-> SHARING 1BULAN Rp. 30.000`)
-  }
-  
-  if (low === 'blackbox ai') {
-    return reply(`🛒 *BLACKBOX AI PREMIUM
-> PRIVATE 3BULAN Rp. 23.000`)
-  }
-
-  break
 }
   
   }
