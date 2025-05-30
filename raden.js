@@ -37,7 +37,11 @@ const {
   const { execSync } = require("child_process");
   const thumMenu = fs.readFileSync("./media/raden.png")
   const databasePath = path.join(__dirname, './database/database.json');
-
+  const tanggalFormat = new Date().toLocaleDateString('id-ID', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  });
 const databaseFile = './database.json';
 let database = { lists: {} };
 
