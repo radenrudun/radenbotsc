@@ -1,11 +1,7 @@
 {
   "lists": {
-    "62812xxxxxxx-161234@g.us": {
-      "ucapan selamat pagi": "Selamat pagi semuanya!",
-      "kata motivasi": "Jangan menyerah sebelum berjuang."
-    },
-    "62857xxxxxxx-129219@g.us": {
-      "perkenalan": "Silakan perkenalkan diri ya 😄"
-    }
+    "produk satu": "ini adalah produk satu",
+    "paket vip": "langganan VIP 1 bulan Rp. 25.000",
+    "chatgpt premium": "Akses ChatGPT Plus 1 bulan - Rp. 30.000"
   }
 }
