@@ -70,10 +70,6 @@ function saveDatabase() {
     const data = fs.readFileSync(databasePath);
     return JSON.parse(data);
   };
-  
-  const saveDatabase = (data) => {
-    fs.writeFileSync(databasePath, JSON.stringify(data, null, 2));
-  };
 
 async function urlToSticker(url) {
   const res = await axios.get(url, { responseType: 'arraybuffer' });
