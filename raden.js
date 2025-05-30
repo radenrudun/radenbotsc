@@ -384,17 +384,31 @@ ${daftarKey}
         }
         break
         case 'help':
-        case 'bantuan': {
-          reply(`*💡PANDUAN CARA PENGGUNAAN*
-> Ketik \`list\` untuk menampilkan produk.
-> Jika anda sudah mengirim \`list\` maka akan ada respon otomatis yang menampilkan list produk.
-> Didalam \`list\` ada berupa key contoh \`FREE FIRE\` dan jika anda memasukan key tersebut maka akan menampilkan harga untuk produk dari key tersebut, key juga bisa disebut produk.
-> untuk info lebih lanjut bisa ketik \`owner\` maka nanti akan otomatis membalas
-dengan mengirim kontak \`owner\` atau anda bisa join ke grop untuk informasi
-update.
-> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``)
-        }
-        break
+case 'bantuan': {
+  const thumbnail = fs.readFileSync('./media/ppgc.jpg'); // Pastikan file ini ada!
+
+  await raden.sendMessage(from, {
+    text: `*💡 PANDUAN CARA PENGGUNAAN*\n\n` +
+`> Ketik \`list\` untuk menampilkan produk.\n` +
+`> Jika anda sudah mengirim \`list\`, maka akan ada respon otomatis yang menampilkan list produk.\n` +
+`> Di dalam \`list\` ada berupa key, contoh: \`FREE FIRE\`, jika anda memasukkan key tersebut maka akan menampilkan harga untuk produk dari key tersebut. Key juga bisa disebut produk.\n` +
+`> Untuk info lebih lanjut bisa ketik \`owner\`, maka bot akan otomatis membalas dengan kontak owner.\n` +
+`> Atau, join grup untuk informasi update:` +
+`> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
+    contextInfo: {
+      externalAdReply: {
+        title: '📢 RADEN STORE - TOPUP MURAH',
+        body: 'Klik untuk masuk grup WhatsApp',
+        sourceUrl: 'https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8',
+        mediaType: 1,
+        renderLargerThumbnail: true,
+        showAdAttribution: true,
+        jpegThumbnail: thumbnail // thumbnail lokal
+      }
+    }
+  }, { quoted: m });
+}
+break;
         //ALLMENU RADEN STORE
 case 'raden':
   case 'menu': {
