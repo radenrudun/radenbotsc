@@ -423,6 +423,9 @@ if (match) {
 }
   const low = body.toLowerCase().trim();
   
+  if (low === 'Saya ingin top up game')
+  return reply(`Untuk TopUp Game kisa ketik dan kirim key dibawah ya kak\n> FREE FIRE\n> MOBILE LEGEND\n> PUBGM\n> HOK> PROSES LEBIH LANJUT BISA HUBUNGI OWNER DENGAN KETIK OWNER`)
+  
   
 }
   
