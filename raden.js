@@ -237,7 +237,7 @@ async function handler(raden, m) {
   }
 
   await raden.sendMessage(callerId, {
-    text: 'DILARANG MENELPON NOMOR BOT, SILAHKAN KETIK *HELP* ATAU *MENU !!*'
+    text: `\`\`\`DILARANG MENELPON NOMOR INI, SILAHKAN KETIK DAN KIRIM\`\`\` *HELP* \`\`\`ATAU\`\`\` *OWNER* \`\`\`UNTUK MENGHUBUNGI OWNER\`\`\`\n\`\`\`JIKA URGENT SILAHKAN HUBUNGI OWNER\`\`\``
   }, { quoted: m });
 }
 if (db.settings.autoread) {
