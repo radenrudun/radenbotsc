@@ -385,25 +385,29 @@ ${daftarKey}
         break
         case 'help':
 case 'bantuan': {
-  await raden.sendMessage(from, {
+  const sections = [{
+    title: "📌 PILIHAN CEPAT",
+    rows: [
+      { title: "📄 Lihat Produk", rowId: "list" },
+      { title: "📞 Kontak Owner", rowId: "owner" }
+    ]
+  }]
+
+  const listMessage = {
     text: `*💡 PANDUAN CARA PENGGUNAAN*\n\n` +
-`> Ketik \`list\` dan kirim untuk menampilkan produk\n` +
-`> Dalam list ada key seperti: \`FREE FIRE\`, Jika anda mengetik dan mengirim \`FREE FIRE\` maka akan otomatis muncul harganya.\n` +
-`> Info lebih lanjut bisa ketik \`owner\`.\n` +
-`> Untuk info update silahkan join grup:\n` +
-`> ,\`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
-    contextInfo: {
-      externalAdReply: {
-        title: '📢 RADEN STORE - TOPUP MURAH',
-        body: 'Klik untuk masuk grup WhatsApp',
-        sourceUrl: 'https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8',
-        mediaType: 1,
-        showAdAttribution: true
-      }
-    }
-  }, { quoted: m });
+          `> Ketik \`list\` dan kirim untuk menampilkan produk\n` +
+          `> Dalam list ada key seperti: \`FREE FIRE\`, Jika anda mengetik dan mengirim \`FREE FIRE\` maka akan otomatis muncul harganya.\n` +
+          `> Info lebih lanjut bisa ketik \`owner\`.\n` +
+          `> Untuk info update silahkan join grup:\n` +
+          `> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``,
+    footer: `${botName} • ${botVersion}`,
+    buttonText: "🔘 MENU CEPAT",
+    sections
+  }
+
+  await raden.sendMessage(from, listMessage, { quoted: m });
 }
-break;
+break
         //ALLMENU RADEN STORE
 case 'raden':
   case 'menu': {
