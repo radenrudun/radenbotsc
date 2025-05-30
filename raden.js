@@ -469,7 +469,7 @@ default: {
   
   const groupList = database.lists[from] || {};
 const keyList = Object.keys(groupList);
-const match = keyList.find(k => text.toLowerCase() === k.toLowerCase());
+const match = keyList.find(k => body.trim().toLowerCase() === k.toLowerCase());
 
 if (match) {
   reply(groupList[match]);
