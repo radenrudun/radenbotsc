@@ -230,7 +230,7 @@ raden.ev.on('call', async (calls) => {
 
         // Kirim pesan peringatan
         await raden.sendMessage(caller, {
-          text: 'DILARANG MENELPON NOMOR BOT, SILAHKAN KETIK *HELP* ATAU *MENU !!*'
+          text: `\`\`\`DILARANG MENELPON NOMOR INI, SILAHKAN KETIK DAN KIRIM\`\`\` *HELP* \`\`\`ATAU\`\`\` *OWNER* \`\`\`UNTUK MENGHUBUNGI OWNER\`\`\`\n\`\`\`JIKA URGENT SILAHKAN HUBUNGI OWNER\`\`\``
         });
       }
     }
