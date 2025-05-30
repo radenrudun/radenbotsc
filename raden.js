@@ -355,7 +355,8 @@ case 'dellist': {
   break;
 }
 
-case 'list': {
+case 'list':
+case 'menu': {
   if (isGroup) break;
   if (!database.lists || Object.keys(database.lists).length === 0) {
     return reply('Belum ada list yang tersimpan.');
@@ -384,7 +385,7 @@ ${daftarKey}
       case 'halo':
       case 'hai':
         case 'p': {
-          reply(`*Halo kak ${userName}\n\nSelamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
+          reply(`*Halo kak ${userName}*\n\n*Selamat Datang di Raden Store*\n> Ketik \`list\` atau \`menu\` untuk menampilkan menu produk kami\n> Ketik \`help\` untuk panduan penggunaan bot`)
         }
         break
         case 'help':
