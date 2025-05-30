@@ -286,78 +286,78 @@ case 'autoread': {
   break;
 }
 case 'addlist': {
-  if (!isOwner) return reply(ownerOnly)
-  if (!text.includes('|')) return reply('Format salah!\nContoh: addlist produk satu | ini adalah produk satu!');
-  const [rawKey, rawValue] = text.split('|');
+  if (isGroup) break;
+  if (!isOwner) return reply(ownerOnly);
+  if (!text.includes('|')) return reply('Format salah!\nContoh: addlist nama produk|deskripsi');
+
+  const [rawKey, ...valParts] = text.split('|');
   const key = rawKey.trim().toLowerCase();
-  const value = rawValue.trim();
+  const value = valParts.join('|').trim();
 
-  if (!value) return reply('Isi list tidak boleh kosong!');
-  if (!database.lists[from]) database.lists[from] = {};
-  if (database.lists[from][key]) return reply('Key tersebut sudah terdaftar!');
+  if (!key || !value) return reply('Key dan value tidak boleh kosong.');
+  if (!database.lists) database.lists = {};
+  if (database.lists[key]) return reply('Key sudah ada, gunakan *updatelist*.');
 
-  database.lists[from][key] = value;
+  database.lists[key] = value;
   saveDatabase();
-  reply(`List berhasil ditambahkan!\nKey: *${key}*\nIsi: ${value}`);
+  reply(`List ditambahkan:\nKey: *${key}*\nIsi: ${value}`);
   break;
 }
 
 case 'updatelist': {
-  if (!isOwner) return reply(ownerOnly)
-  if (!text.includes('|')) return reply('Format salah!\nContoh: updatelist produk satu |ini adalah produk satu!');
-  const [rawKey, rawValue] = text.split('|');
-  const key = rawKey.trim().toLowerCase();
-  const value = rawValue.trim();
+  if (isGroup) break;
+  if (!isOwner) return reply(ownerOnly);
+  if (!text.includes('|')) return reply('Format salah!\nContoh: updatelist nama produk|deskripsi baru');
 
-  if (!database.lists[from] || !database.lists[from][key]) return reply('Key belum terdaftar!');
-  database.lists[from][key] = value;
+  const [rawKey, ...valParts] = text.split('|');
+  const key = rawKey.trim().toLowerCase();
+  const value = valParts.join('|').trim();
+
+  if (!key || !value) return reply('Key dan value tidak boleh kosong.');
+  if (!database.lists || !database.lists[key]) return reply('Key belum ada.');
+
+  database.lists[key] = value;
   saveDatabase();
-  reply(`List berhasil diupdate!\nKey: *${key}*\nIsi baru: ${value}`);
+  reply(`♻️ Key *${key}* berhasil diperbarui.`);
   break;
 }
 
 case 'dellist': {
-  if (!isOwner) return reply(ownerOnly)
+  if (isGroup) break;
+  if (!isOwner) return reply(ownerOnly);
   const key = text.trim().toLowerCase();
-  if (!key) return reply('Contoh: dellist ucapan selamat');
-  if (!database.lists[from] || !database.lists[from][key]) return reply('Key tidak ditemukan!');
-
-  delete database.lists[from][key];
+  if (!database.lists || !database.lists[key]) return reply('Key tidak ditemukan.');
+  delete database.lists[key];
   saveDatabase();
-  reply(`List dengan key *${key}* berhasil dihapus!`);
+  reply(`Key *${key}* berhasil dihapus.`);
   break;
 }
 
 case 'list': {
   if (isGroup) break;
-  const listData = database.lists[from];
-  if (!listData || Object.keys(listData).length === 0) {
-    return reply('Belum ada list yang tersimpan di sini.');
+  if (!database.lists || Object.keys(database.lists).length === 0) {
+    return reply('Belum ada list yang tersimpan.');
   }
 
-  const namaTempat = isGroup ? groupMetadata.subject : 'CHAT PRIBADI';
-  const tanggal = moment().format('dddd, DD MMMM YYYY');
-  const waktu = moment().format('HH:mm:ss') + ' WIB';
+  const waktuList = moment().format('HH:mm:ss') + ' WIB';
 
-  const daftarKey = Object.keys(listData)
+  const daftarKey = Object.keys(database.lists)
     .map(k => `╠🛍️ *${k.toUpperCase()}*`)
     .join('\n');
 
-  const pesan = `╔═════ \`INFORMASI USER\` ═════
-║ *NAMA* : *${userName || 'Username'}*
-║ *TOKO*     : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
-║ *TANGGAL*   : \`\`\`${tanggalFormat}\`\`\`
+  const pesan = `╔═════ \`DAFTAR LIST\` ═════
+║👤 NAMA : *${botName || 'Raden Store'}*
+║🛒 TOKO : \`\`\`${groupMetadata.subject || 'Raden Store'}\`\`\`
+║📆 TANGGAL : \`\`\`${tanggalFormat}\`\`\`
+║⏰ JAM : \`\`\`${waktuList}\`\`\`
 
-╠════ \`LIST ${groupMetadata.subject || 'RADEN STORE'}\` ══
 ${daftarKey}
-║
 ╚═══ ⟪ *KETIK KEY DIATAS UNTUK RESPON*
 
 > ©𝑹𝒂𝒅𝒆𝒏 𝑺𝒕𝒐𝒓𝒆`;
 
   return reply(pesan);
 }
-break
   
       case 'halo':
       case 'hai':
