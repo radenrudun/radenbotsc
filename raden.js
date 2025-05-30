@@ -410,24 +410,32 @@ case 'bantuan': {
 break;
 
 default: {
-  
   const groupList = database.lists[from] || {};
   const keyList = Object.keys(groupList);
   const match = keyList.find(k => body.trim().toLowerCase() === k.toLowerCase());
-  const incoming = body.trim().toLowerCase()
+  const incoming = body.trim().toLowerCase();
+  
   if (!isGroup && database.lists && database.lists[incoming]) {
     return reply(database.lists[incoming]);
   }
-if (match) {
-  reply(groupList[match]);
-}
+  
+  if (match) {
+    return reply(groupList[match]);
+  }
+  
   const low = body.toLowerCase().trim();
   
-  if (low === 'Saya ingin top up game')
-  return reply(`Untuk TopUp Game kisa ketik dan kirim key dibawah ya kak\n> FREE FIRE\n> MOBILE LEGEND\n> PUBGM\n> HOK> PROSES LEBIH LANJUT BISA HUBUNGI OWNER DENGAN KETIK OWNER`)
-  
-  
+  if (low === 'saya ingin top up game') {
+    return reply(`Untuk TopUp Game bisa ketik dan kirim key dibawah ya kak\n> FREE FIRE\n> MOBILE LEGEND\n> PUBGM\n> HOK\n> Proses lebih lanjut bisa hubungi owner dengan ketik owner dan chat owner`);
+  }
+  if (low === 'Saya ingin beli aplikasi premium') {
+    return reply(`Untuk Aplikasi Premium bisa ketik dan kirim key dibawah ya kak\n> ALIGHT MOTION\n> CAPCUT\n> CANVA\n> NETFLIX\n> SPOTIFY\n> CHATGPT\n> BLACKBOX AI\n> YOUTUBE\n> Poses lebih lanjut bisa hubungi owner dengan ketik owner dan chat owner`)
+  }
+  if (low === 'Saya ingin sewa bot WhatsApp') {
+    return reply(`Untuk Sewa Bot bisa cobain dulu botnya di grup kami ya kak, ketik menu di grup maka bot akan menampilkan menu bot yang bisa dipakai, bot ini cocok untuk jaga grup dan untuk menambahkan list produk dan menampilkan list produ. Untuk info lebih lanjut bisa hubungi owner dengan ketik owner atau bisa langsung cobain bot gratis di grup kami\n> \`\`\`https://chat.whatsapp.com/GPQXetga5XpKr4dih7a6Z8\`\`\``)
+  }
 }
+break;
   
   }
 }
